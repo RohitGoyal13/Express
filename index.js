@@ -1,7 +1,9 @@
+// require('dotenv').config()
+import 'dotenv/config'
 import express from 'express'
 
 const app = express()
-const port = 3000
+const port = 3000 || process.env.PORT
 
 let teaData = []
 let nextId = 1
@@ -59,7 +61,7 @@ app.delete('/tea/:id', (req, res) => {
         return res.status(404).send({ error: 'Tea not found' })
     }
     teaData.splice(index, 1)
-    return res.status(204).send()
+    return res.status(204).send('Deleted the Index')
 })
 
 // Start the server
